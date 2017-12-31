@@ -1,0 +1,11 @@
+@import './mixins/mixins';
+
+[data-section="SignUp"] {
+
+    .divider {
+        @include browser-prefix(display, flex);
+        justify-content: center;
+        @include h-divider;
+    }
+    
+}

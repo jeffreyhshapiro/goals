@@ -14,8 +14,8 @@ export default class Navbar extends React.Component {
                     {/* </LinkContainer> */}
                     <NavItem className="nav-item" href="javascript:void(0)">Goals</NavItem>
                     <NavItem className="nav-item" href="javascript:void(0)">Friends</NavItem>
-                    <LinkContainer to="/login">
-                        <NavItem className="nav-item">Login</NavItem>
+                    <LinkContainer to="/signup">
+                        <NavItem className="nav-item">Sign Up</NavItem>
                     </LinkContainer>
                 </Nav>
             </div>

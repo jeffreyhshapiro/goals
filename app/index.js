@@ -6,13 +6,13 @@ import {
     Link
 } from 'react-router-dom'
 import App from '../components/App';
-import Login from '../components/Login'
+import SignUp from '../components/SignUp'
 
 ReactDOM.render(
     <Router>
         <div>
             <Route exact path="/" component={App} />
-            <Route path="/login" component={Login} />
+            <Route path="/signup" component={SignUp} />
         </div>
     </Router>,
     document.getElementById('root')
