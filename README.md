@@ -1,1 +1,1 @@
-Accountability
+This app employs the mighty monolith.  Run `npm run webpack` to start the webpack dev server.  Run `npm start` to start the node server.
