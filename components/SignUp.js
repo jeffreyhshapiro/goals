@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Col, Row, FormControl, FormGroup, ControlLabel, HelpBlock} from 'react-bootstrap';
+import { Grid, Col, Row, FormControl, FormGroup, ControlLabel, Button} from 'react-bootstrap';
 import Navbar from './Navbar';
 import '../styles/SignUp.scss';
 
@@ -13,14 +13,38 @@ class SignUp extends React.Component {
             goal: "",
             step1: "",
             step2: "",
-            step3: ""
+            step3: "",
+            emailAddress: ""
         }
     }
 
     setFormValue(e) {
         this.setState({
             [e.target.name]: e.target.value
-        })
+        });
+    }
+
+    completeSignUp() {
+
+        for(const k in this.state) {
+            const inputField = document.querySelector(`[name=${k}]`);
+            if(this.state[k] === "") {
+                inputField.style.backgroundColor = 'red';
+                inputField.className += " validation-fail"
+            } else {
+                inputField.style.backgroundColor = "";
+                inputField.classList.remove("validation-fail");
+            }
+        }
+
+        const failedValidation = document.querySelectorAll(".validation-fail");
+
+        if(failedValidation.length > 0) {
+            console.log('failed')
+        } else {
+            //success call here
+        }
+
     }
 
     render() {
@@ -48,6 +72,21 @@ class SignUp extends React.Component {
                                 onChange={this.setFormValue.bind(this)}
                             />
                         </Col>
+                        </FormGroup>
+                    </Row>
+                    <Row>
+                        <FormGroup
+                            controlId="formBasicText"
+                        >
+                            <Col xs={12} sm={8} md={8} lg={8} smPush={2} mdPush={2} lgPush={2}>
+                                <FormControl
+                                    name="emailAddress"
+                                    value={this.state.emailAddress}
+                                    placeholder="Email Address"
+                                    onChange={this.setFormValue.bind(this)}
+                                />
+                            </Col>
+                            <div style={{ marginTop: '10px' }}></div>
                         </FormGroup>
                     </Row>
                     <div className="divider"></div>
@@ -98,6 +137,11 @@ class SignUp extends React.Component {
                         </FormGroup>
                     </Row>
                     <div className="divider"></div>
+                    <Row>
+                        <Col style={{display:'flex', justifyContent:'center'}}>
+                            <Button bsStyle="primary" onClick={this.completeSignUp.bind(this)}>Sign up</Button>
+                        </Col>
+                    </Row>
                 </Grid>
             </div>
         )
