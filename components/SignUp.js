@@ -14,7 +14,11 @@ class SignUp extends React.Component {
             step1: "",
             step2: "",
             step3: "",
-            emailAddress: ""
+            emailAddress: "",
+            friend1Name: "",
+            friend1PhoneNumber: "",
+            friend2Name: "",
+            friend2PhoneNumber: ""
         }
     }
 
@@ -137,6 +141,50 @@ class SignUp extends React.Component {
                         </FormGroup>
                     </Row>
                     <div className="divider"></div>
+                    <Row>
+                        <Col xs={12} sm={6} md={6} lg={6}>
+                            <FormGroup>
+                                <FormControl 
+                                    name="friend1Name"
+                                    value={this.state.friend1Name}
+                                    placeholder="First Friend Name"
+                                    onChange={this.setFormValue.bind(this)}
+                                />
+                            </FormGroup>
+                        </Col>
+                        <Col xs={12} sm={6} md={6} lg={6}>
+                            <FormGroup>
+                                <FormControl
+                                    name="friend1PhoneNumber"
+                                    value={this.state.friend1PhoneNumber}
+                                    placeholder="First Friend Number"
+                                    onChange={this.setFormValue.bind(this)}
+                                />
+                            </FormGroup>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={12} sm={6} md={6} lg={6}>
+                            <FormGroup>
+                                <FormControl
+                                    name="friend2Name"
+                                    value={this.state.friend2Name}
+                                    placeholder="Second Friend Name"
+                                    onChange={this.setFormValue.bind(this)}
+                                />
+                            </FormGroup>
+                        </Col>
+                        <Col xs={12} sm={6} md={6} lg={6}>
+                            <FormGroup>
+                                <FormControl
+                                    name="friend2PhoneNumber"
+                                    value={this.state.friend2PhoneNumber}
+                                    placeholder="Second Friend Number"
+                                    onChange={this.setFormValue.bind(this)}
+                                />
+                            </FormGroup>
+                        </Col>
+                    </Row>
                     <Row>
                         <Col style={{display:'flex', justifyContent:'center'}}>
                             <Button bsStyle="primary" onClick={this.completeSignUp.bind(this)}>Sign up</Button>

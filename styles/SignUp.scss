@@ -3,7 +3,7 @@
 [data-section="SignUp"] {
 
     .divider {
-        @include browser-prefix(display, flex);
+        @include browser-prefix(display, flex, webkit spec);
         justify-content: center;
         @include h-divider;
     }

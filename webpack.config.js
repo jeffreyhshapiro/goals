@@ -8,7 +8,7 @@ const HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
 })
 
 module.exports = {
-    entry: __dirname + '/app/index.js',
+    entry:  __dirname + '/app/index.js',
     output: {
         path: __dirname + "./bin",
         filename: "bundle.js"

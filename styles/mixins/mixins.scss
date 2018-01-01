@@ -1,9 +1,21 @@
-@mixin browser-prefix($property, $value) {
-    -webkit-#{$property}: $value;
-    -moz-#{$property}: $value;
-    -ms-#{$property}: $value;
-    -o-#{$property}: $value;
-    #{$property}: $value;
+@mixin browser-prefix($property, $value, $prefixes) {
+    @each $prefix in $prefixes {
+        @if $prefix == "webkit" {
+            $property: -webkit-#{$value};
+        } 
+        @else if $prefix == "moz" {
+            $property: -moz-#{$value};
+        } 
+        @else if $prefix == "o" {
+            $property: -o-#{$value};
+        } 
+        @else if $prefix == "ms" {
+            $property: -ms-#{$value};
+        } 
+        @else if $prefix == "spec" {
+            $property: $value;
+        } 
+    }
 }
 
 @mixin h-divider {

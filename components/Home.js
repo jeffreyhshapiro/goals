@@ -8,8 +8,8 @@ class Home extends React.Component {
         return (
             <div data-section="Home">
                 <Row>
-                    <Col xs={6} sm={6} md={6} lg={6}>Active Goals</Col>
-                    <Col xs={6} sm={6} md={6} lg={6}>Friends</Col>
+                    <Col xs={6} sm={6} md={6} lg={6} className="flexify">Active Goals</Col>
+                    <Col xs={6} sm={6} md={6} lg={6} className="flexify">Friends</Col>
                 </Row>
             </div>
         )

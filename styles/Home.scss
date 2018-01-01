@@ -1,5 +1,8 @@
 @import './mixins/mixins';
 
 [data-section="Home"] {
-    @include browser-prefix("display", "flex");
+    .flexify {
+        @include browser-prefix(display, flex, webkit spec);
+        background-color: #f5f5f5;
+    }
 }

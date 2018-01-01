@@ -9,9 +9,9 @@ export default class Navbar extends React.Component {
         return (
             <div data-section="Navbar">
                 <Nav bsStyle="pills" className="navbar">
-                    {/* <LinkContainer> */}
-                        <NavItem className="nav-item">Accountability</NavItem>
-                    {/* </LinkContainer> */}
+                    <LinkContainer to="/">
+                        <NavItem className="nav-item">Home</NavItem>
+                    </LinkContainer>
                     <NavItem className="nav-item" href="javascript:void(0)">Goals</NavItem>
                     <NavItem className="nav-item" href="javascript:void(0)">Friends</NavItem>
                     <LinkContainer to="/signup">
