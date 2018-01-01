@@ -1,9 +1,8 @@
 import axios from 'axios';
 
-export function signUpUser() {
-    console.log(this)
+export function signUpUser(userInfo) {
     axios
-        .post('/register', this)
+        .post('/register', userInfo)
         .then((res) => {
             console.log(res)
         })

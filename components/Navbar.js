@@ -7,7 +7,7 @@ export default class Navbar extends React.Component {
 
     render() {
         return (
-            <div data-section="Navbar">
+            <div data-section="Navbar" style={{backgroundColor:'#f5f5f5'}}>
                 <Nav bsStyle="pills" className="navbar">
                     <LinkContainer to="/">
                         <NavItem className="nav-item">Home</NavItem>

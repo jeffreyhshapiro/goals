@@ -45,23 +45,29 @@ class SignUp extends React.Component {
         const failedValidation = document.querySelectorAll(".validation-fail");
 
         if(failedValidation.length > 0) {
+            //return an error message
             console.log('failed')
         } else {
-            signUpUser.call(this.state)
+            signUpUser(this.state)
         }
 
     }
 
     render() {
+
+        const width = {
+            width: '70%'
+        }
+
         return (
             <div data-section="SignUp">
                 <Navbar />
-                <Grid>
+                <Grid style={width}>
                     <Row>
                         <FormGroup
                             controlId="formBasicText"
                         >
-                        <Col xs={12} sm={4} md={4} lg={4} smPush={2} mdPush={2} lgPush={2}>
+                        <Col xs={12} sm={6} md={6} lg={6}>
                             <FormControl
                                 name="firstName"
                                 value={this.state.firstName}
@@ -69,7 +75,7 @@ class SignUp extends React.Component {
                                 onChange={this.setFormValue.bind(this)}
                             />
                         </Col>
-                        <Col xs={12} sm={4} md={4} lg={4} smPush={2} mdPush={2} lgPush={2}>
+                        <Col xs={12} sm={6} md={6} lg={6}>
                             <FormControl
                                 name="lastName"
                                 value={this.state.lastName}
@@ -83,7 +89,7 @@ class SignUp extends React.Component {
                         <FormGroup
                             controlId="formBasicText"
                         >
-                            <Col xs={12} sm={8} md={8} lg={8} smPush={2} mdPush={2} lgPush={2}>
+                            <Col xs={12} sm={12} md={12} lg={12}>
                                 <FormControl
                                     name="emailAddress"
                                     value={this.state.emailAddress}
@@ -96,10 +102,10 @@ class SignUp extends React.Component {
                     </Row>
                     <div className="divider"></div>
                 </Grid>
-                <Grid>
+                <Grid style={width}>
                     <Row>
                         <FormGroup>
-                            <Col xs={12} sm={8} md={8} lg={8} smPush={2} mdPush={2} lgPush={2}>
+                            <Col xs={12} sm={12} md={12} lg={12}>
                                 <FormControl
                                     name="goal"
                                     value={this.state.goal}
@@ -109,8 +115,6 @@ class SignUp extends React.Component {
                             </Col>
                         </FormGroup>
                     </Row>
-                </Grid>
-                <Grid>
                     <Row>
                         <FormGroup>
                             <div style={{ marginTop: '10px' }}></div>
@@ -142,6 +146,8 @@ class SignUp extends React.Component {
                         </FormGroup>
                     </Row>
                     <div className="divider"></div>
+                </Grid>
+                <Grid style={width}>
                     <Row>
                         <Col xs={12} sm={6} md={6} lg={6}>
                             <FormGroup>
