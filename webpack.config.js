@@ -29,6 +29,9 @@ module.exports = {
     },
     devServer: {
         historyApiFallback: true,
+        proxy: {
+            "/register": "http://localhost:3000/api/"
+        }
     },
     plugins: [HTMLWebpackPluginConfig]
 }

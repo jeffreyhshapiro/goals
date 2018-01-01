@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Col, Row, FormControl, FormGroup, ControlLabel, Button} from 'react-bootstrap';
 import Navbar from './Navbar';
+import { signUpUser } from '../utils/utils.js';
 import '../styles/SignUp.scss';
 
 class SignUp extends React.Component {
@@ -46,7 +47,7 @@ class SignUp extends React.Component {
         if(failedValidation.length > 0) {
             console.log('failed')
         } else {
-            //success call here
+            signUpUser.call(this.state)
         }
 
     }
