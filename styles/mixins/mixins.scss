@@ -1,20 +1,29 @@
 @mixin browser-prefix($property, $value, $prefixes) {
+    // @debug $prefixes;
+    // background-color: firebrick;
     @each $prefix in $prefixes {
-        @if $prefix == "webkit" {
-            $property: -webkit-#{$value};
+        // @debug $prefix;
+        // @if $prefix == "webkit" {
+        //     $property: -webkit-#{$value};
+        // } 
+        // @else if $prefix == "moz" {
+        //     $property: -moz-#{$value};
+        // } 
+        // @else if $prefix == "o" {
+        //     $property: -o-#{$value};
+        // } 
+        // @else if $prefix == "ms" {
+        //     $property: -ms-#{$value};
+        // } 
+        // @else if $prefix == "spec" {
+        //     $property: $value;
+        // } 
+        @if $prefix == "spec" {
+            #{$property}: #{$value};
         } 
-        @else if $prefix == "moz" {
-            $property: -moz-#{$value};
-        } 
-        @else if $prefix == "o" {
-            $property: -o-#{$value};
-        } 
-        @else if $prefix == "ms" {
-            $property: -ms-#{$value};
-        } 
-        @else if $prefix == "spec" {
-            $property: $value;
-        } 
+        @else {
+            #{$property}: -#{$prefix}-#{$value};
+        }
     }
 }
 
