@@ -34,7 +34,6 @@ class SignUp extends React.Component {
         for(const k in this.state) {
             const inputField = document.querySelector(`[name=${k}]`);
             if(this.state[k] === "") {
-                inputField.style.backgroundColor = 'red';
                 inputField.className += " validation-fail"
             } else {
                 inputField.style.backgroundColor = "";
@@ -45,8 +44,11 @@ class SignUp extends React.Component {
         const failedValidation = document.querySelectorAll(".validation-fail");
 
         if(failedValidation.length > 0) {
-            //return an error message
-            console.log('failed')
+
+            Array.prototype.forEach.call(failedValidation, (node) => {
+                node.style.backgroundColor = '#D03433';
+            })
+
         } else {
             signUpUser(this.state)
         }
@@ -92,6 +94,7 @@ class SignUp extends React.Component {
                             <Col xs={12} sm={12} md={12} lg={12}>
                                 <FormControl
                                     name="emailAddress"
+                                    type="email"
                                     value={this.state.emailAddress}
                                     placeholder="Email Address"
                                     onChange={this.setFormValue.bind(this)}
