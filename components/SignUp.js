@@ -19,7 +19,8 @@ class SignUp extends React.Component {
             friend1Name: "",
             friend1PhoneNumber: "",
             friend2Name: "",
-            friend2PhoneNumber: ""
+            friend2PhoneNumber: "",
+            password: ""
         }
     }
 
@@ -67,7 +68,7 @@ class SignUp extends React.Component {
                 <Grid style={width}>
                     <Row>
                         <FormGroup
-                            controlId="formBasicText"
+                            controlId=""
                         >
                         <Col xs={12} sm={6} md={6} lg={6}>
                             <FormControl
@@ -89,7 +90,7 @@ class SignUp extends React.Component {
                     </Row>
                     <Row>
                         <FormGroup
-                            controlId="formBasicText"
+                            controlId=""
                         >
                             <Col xs={12} sm={12} md={12} lg={12}>
                                 <FormControl
@@ -101,6 +102,21 @@ class SignUp extends React.Component {
                                 />
                             </Col>
                             <div style={{ marginTop: '10px' }}></div>
+                        </FormGroup>
+                        <FormGroup
+                            controlId=""
+                        >
+                            <Col xs={12} sm={12} md={12} lg={12}
+                                style={{ marginTop: '10px' }}
+                            >
+                                <FormControl
+                                    name="password"
+                                    type="password"
+                                    value={this.state.password}
+                                    placeholder="Password"
+                                    onChange={this.setFormValue.bind(this)}
+                                />
+                            </Col>
                         </FormGroup>
                     </Row>
                     <div className="divider"></div>
