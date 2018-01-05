@@ -9,4 +9,4 @@ app.use(bp.json())
 
 require('./api')(app)
 
-models.sequelize.sync({ force: false }).then(() => app.listen(PORT, () => console.log(`Listening on ${PORT}`)));
+models.sequelize.sync({ force: true }).then(() => app.listen(PORT, () => console.log(`Listening on ${PORT}`)));
