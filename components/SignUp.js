@@ -212,8 +212,9 @@ class SignUp extends React.Component {
                         </Col>
                     </Row>
                     <Row>
-                        <Col style={{display:'flex', justifyContent:'center'}}>
+                        <Col style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
                             <Button bsStyle="primary" onClick={this.completeSignUp.bind(this)}>Sign up</Button>
+                            <a href="/login" style={{marginLeft:'10px'}}> Have an account?</a>
                         </Col>
                     </Row>
                 </Grid>

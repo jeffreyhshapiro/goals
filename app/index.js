@@ -7,12 +7,14 @@ import {
 } from 'react-router-dom'
 import App from '../components/App';
 import SignUp from '../components/SignUp'
+import Login from '../components/Login'
 
 ReactDOM.render(
     <Router>
         <div>
             <Route exact path="/" component={App} />
             <Route path="/signup" component={SignUp} />
+            <Route path="/login" component={Login} />
         </div>
     </Router>,
     document.getElementById('root')

@@ -11,14 +11,43 @@ module.exports = (app) => {
     app.use(bp.urlencoded({ extended: false }))
     app.use(bp.json())
 
+    passport.use('local',
+        new LocalStrategy({
+            usernameField: 'emailAddress',
+            passwordField: 'password'
+        },
+            (username, password, done) => {
+
+                return models.User.findOne({
+                    where: {
+                        emailAddress: username
+                    }
+                })
+                .then((res) => {
+                    // console.log(res)
+                    console.log(res.emailAddress)
+                    console.log(res.password)
+
+                    return bcrypt.compare(res.password, password)
+                })
+                .then((doesPasswordMatch) => {
+                    console.log(doesPasswordMatch)
+                    if(doesPasswordMatch) {
+                        return done(null, user)
+                    } else {
+                        return done(null, false, {message: "Your username or password is incorrect"})
+                    }
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+            }
+        )
+    )
+
     app.post('/api/register', (req, res) => {
         //db call here
         const { firstName, lastName, emailAddress, password } = req.body;
-
-        console.log(firstName)
-        console.log(lastName)
-        console.log(emailAddress)
-        console.log(password)
 
         models.User.create({
             firstName,
@@ -30,11 +59,17 @@ module.exports = (app) => {
             console.log('success')
         }).catch((err) => {
             console.log(err)
-        })
+        });
 
-        
+    });
 
-    })
+    app.post('/api/authenticate', passport.authenticate('local', 
+            {
+                successRedirect: "/",
+                failureRedirect: "/signup"
+            }
+        )
+    );
 }
 
 

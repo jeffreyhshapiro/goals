@@ -8,3 +8,11 @@ export function signUpUser(userInfo) {
         })
 
 }
+
+export function signInUser(userInfo) {
+    axios
+        .post('/authenticate', userInfo)
+        .then((res) => {
+            console.log(res)
+        })
+}
