@@ -21,8 +21,11 @@ export function signInUser(userInfo) {
 
 export function isUserAuthenticated() {
 
-    return axios.get('/verifyAuth').then(res => {
-        return res;
-    });
+    return axios
+    .get('/verifyAuth')
+    .then(res => {
+        return res.data
+    })
+    .catch(err => err)
 
 }

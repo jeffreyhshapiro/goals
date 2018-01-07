@@ -8,43 +8,30 @@ class App extends React.Component {
     constructor(props) {
         super(props)
 
-        const self = this;
-
         this.state = {
-            user: () => {
-                return isUserAuthenticated().then(res => {
-                    return res
-                })
-            }
+            user: {}
         }
 
-        isUserAuthenticated().then((res) => {
-
-        })
     }
 
-    // componentWillMount() {
-    //     const user = ;
-
-    //     user.then((res) => {
-    //         this.setState({
-    //             user: res
-    //         }, () => {
-    //             console.log(this.state.user)
-    //         })
-    //     });
-    // }
-
-
-
+    componentWillMount() {
+        isUserAuthenticated()
+        .then((res) => {
+            this.setState((state, prop) => {
+                return {
+                    user: res.user
+                }
+            })
+        })
+    }
 
     render() {
         return (
             <div data-section="App">
                 <Grid>
-                    <Navbar userInfo={this.state.user()} />
+                    <Navbar userInfo={this.state.user} />
                     <div id="main-app">
-                        <Home userInfo={this.state.user} />
+                        <Home />
                     </div>
                 </Grid>
             </div>

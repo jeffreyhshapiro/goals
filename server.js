@@ -7,7 +7,7 @@ const PORT = process.env.NODE_ENV || 3000;
 
 app.use(bp.urlencoded({ extended: false }));
 app.use(bp.json());
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }))
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: null } }))
 
 require('./api')(app)
 

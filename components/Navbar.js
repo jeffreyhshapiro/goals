@@ -7,7 +7,6 @@ export default class Navbar extends React.Component {
     constructor(props) {
         super(props)
 
-        console.log("props", props)
     }
 
     render() {
@@ -20,13 +19,11 @@ export default class Navbar extends React.Component {
                     <NavItem className="nav-item" href="javascript:void(0)">Goals</NavItem>
                     <NavItem className="nav-item" href="javascript:void(0)">Friends</NavItem>
                     {
-                        this.props.userInfo
+                        this.props.userInfo && Object.keys(this.props.userInfo).length > 0
 
                         ?
 
-                        <LinkContainer to="/">
-                            <NavItem className="nav-item">Hey, {this.props.userInfo.firstName}!</NavItem>
-                        </LinkContainer>
+                        <NavItem className="nav-item">Hey, {this.props.userInfo.user.firstName}!</NavItem>
 
                         :
 
