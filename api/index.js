@@ -3,13 +3,14 @@ const LocalStrategy = require('passport-local').Strategy;
 const bp = require('body-parser');
 const bcrypt = require('bcrypt');
 const models = require('../models');
-const saltRounds = 10;
 
 
 module.exports = (app) => {
 
     app.use(bp.urlencoded({ extended: false }))
     app.use(bp.json())
+
+    require('./htmlRoutes/htmlRoutes.js')(app);
 
     passport.use('local',
         new LocalStrategy({
@@ -24,16 +25,11 @@ module.exports = (app) => {
                     }
                 })
                 .then((res) => {
-                    // console.log(res)
-                    console.log(res.emailAddress)
-                    console.log(res.password)
-
-                    return bcrypt.compare(res.password, password)
+                    return bcrypt.compare(password, res.password)
                 })
                 .then((doesPasswordMatch) => {
-                    console.log(doesPasswordMatch)
                     if(doesPasswordMatch) {
-                        return done(null, user)
+                        return done(null, username)
                     } else {
                         return done(null, false, {message: "Your username or password is incorrect"})
                     }
@@ -54,11 +50,11 @@ module.exports = (app) => {
             lastName,
             emailAddress,
             password
-        }).then((res) => {
-            console.log(res)
-            console.log('success')
+        }).then((result) => {
+            res.status(200).send(true);
         }).catch((err) => {
             console.log(err)
+            res.status(403).send(err);
         });
 
     });
