@@ -10,8 +10,6 @@ module.exports = (app) => {
     app.use(bp.urlencoded({ extended: false }))
     app.use(bp.json())
 
-    require('./htmlRoutes/htmlRoutes.js')(app);
-
     passport.use('local',
         new LocalStrategy({
             usernameField: 'emailAddress',
@@ -19,17 +17,29 @@ module.exports = (app) => {
         },
             (username, password, done) => {
 
-                return models.User.findOne({
+                models.User.findOne({
                     where: {
                         emailAddress: username
                     }
                 })
                 .then((res) => {
-                    return bcrypt.compare(password, res.password)
+                    return bcrypt
+                            .compare(password, res.password)
+                            .then((doesPasswordMatch) => {
+                                if(doesPasswordMatch) {
+                                    return {
+                                        firstName: res.firstName,
+                                        lastName: res.lastName,
+                                        emailAddress: res.emailAddress
+                                    }
+                                } else {
+                                    return false
+                                }
+                            })
                 })
-                .then((doesPasswordMatch) => {
-                    if(doesPasswordMatch) {
-                        return done(null, username)
+                .then((success) => {
+                    if(success) {
+                        done(null, success)
                     } else {
                         return done(null, false, {message: "Your username or password is incorrect"})
                     }
@@ -41,6 +51,17 @@ module.exports = (app) => {
         )
     )
 
+    passport.serializeUser(function (user, done) {
+        done(null, user);
+    });
+
+    passport.deserializeUser(function (user, done) {
+        done(null, user);
+    });
+
+    app.use(passport.initialize());
+    app.use(passport.session());
+
     app.post('/api/register', (req, res) => {
         //db call here
         const { firstName, lastName, emailAddress, password } = req.body;
@@ -51,21 +72,20 @@ module.exports = (app) => {
             emailAddress,
             password
         }).then((result) => {
-            res.status(200).send(true);
+            res.status(200).send({ authSuccess: true });
         }).catch((err) => {
-            console.log(err)
-            res.status(403).send(err);
+            res.status(403).send({authSuccess: err});
         });
 
     });
 
-    app.post('/api/authenticate', passport.authenticate('local', 
-            {
-                successRedirect: "/",
-                failureRedirect: "/signup"
-            }
-        )
-    );
+    app.post('/api/authenticate', passport.authenticate('local'), (req, res) => {
+        res.json({ authSuccess: true })
+    });
+
+    app.get('/api/verifyAuth', (req, res) => {
+        res.json({ user: req.session.passport})
+    })
 }
 
 

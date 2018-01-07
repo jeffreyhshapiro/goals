@@ -1,11 +1,13 @@
 const express = require('express');
 const app = express();
+const session = require('express-session');
 const bp = require('body-parser');
 const models = require('./models');
 const PORT = process.env.NODE_ENV || 3000;
 
-app.use(bp.urlencoded({ extended: false }))
-app.use(bp.json())
+app.use(bp.urlencoded({ extended: false }));
+app.use(bp.json());
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }))
 
 require('./api')(app)
 
