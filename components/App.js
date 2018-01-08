@@ -18,9 +18,7 @@ class App extends React.Component {
         isUserAuthenticated()
         .then((res) => {
             this.setState((state, prop) => {
-                return {
-                    user: res.user
-                }
+                return res.user
             })
         })
     }

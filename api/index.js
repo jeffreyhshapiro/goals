@@ -30,7 +30,8 @@ module.exports = (app) => {
                                     return {
                                         firstName: res.firstName,
                                         lastName: res.lastName,
-                                        emailAddress: res.emailAddress
+                                        emailAddress: res.emailAddress,
+                                        _id: res.id
                                     }
                                 } else {
                                     return false

@@ -23,7 +23,7 @@ export default class Navbar extends React.Component {
 
                         ?
 
-                        <NavItem className="nav-item">Hey, {this.props.userInfo.user.firstName}!</NavItem>
+                        <NavItem className="nav-item">Hey, {this.props.userInfo.firstName}!</NavItem>
 
                         :
 
