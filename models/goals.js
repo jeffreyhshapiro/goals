@@ -10,15 +10,13 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BOOLEAN,
             required: true
         }
-    }, {
-        classMethods: {
-            associate: (models) => {
-                Goal.hasOne(models.User, {
-                    foreignKey: "userId"
-                })
-            }
-        }
     });
+
+    Goal.associate = (models) => {
+        Goal.belongsTo(models.User, {
+            foriegnKey: "userId"
+        })
+    }
 
     return Goal;
 }
