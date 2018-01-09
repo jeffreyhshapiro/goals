@@ -11,15 +11,15 @@ class SignUp extends React.Component {
         this.state = {
             firstName: "",
             lastName: "",
-            goal: "",
-            step1: "",
-            step2: "",
-            step3: "",
+            // goal: "",
+            // step1: "",
+            // step2: "",
+            // step3: "",
             emailAddress: "",
-            friend1Name: "",
-            friend1PhoneNumber: "",
-            friend2Name: "",
-            friend2PhoneNumber: "",
+            // friend1Name: "",
+            // friend1PhoneNumber: "",
+            // friend2Name: "",
+            // friend2PhoneNumber: "",
             password: ""
         }
     }
@@ -121,7 +121,7 @@ class SignUp extends React.Component {
                     </Row>
                     <div className="divider"></div>
                 </Grid>
-                <Grid style={width}>
+                {/* <Grid style={width}>
                     <Row>
                         <FormGroup>
                             <Col xs={12} sm={12} md={12} lg={12}>
@@ -210,7 +210,9 @@ class SignUp extends React.Component {
                                 />
                             </FormGroup>
                         </Col>
-                    </Row>
+                    </Row> */}
+
+                <Grid style={width}>
                     <Row>
                         <Col style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
                             <Button bsStyle="primary" onClick={this.completeSignUp.bind(this)}>Sign up</Button>
