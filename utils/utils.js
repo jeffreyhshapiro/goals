@@ -4,7 +4,9 @@ export function signUpUser(userInfo) {
     axios
         .post('/register', userInfo)
         .then((res) => {
-            console.log(res)
+            if (res.data.authSuccess) {
+                window.location = "/"
+            }
         })
 
 }
