@@ -1,4 +1,5 @@
 import axios from 'axios';
+import store from './store'
 
 export function signUpUser(userInfo) {
     axios
@@ -15,9 +16,11 @@ export function signInUser(userInfo) {
     axios
         .post('/authenticate', userInfo)
         .then((res) => {
-            if(res.data.authSuccess) {
-                window.location = "/"
-            }
+            console.log(res)
+            store.dispatch({
+                type: "AUTH_SIGN_IN",
+                payload: res.data
+            })
         })
 }
 
@@ -26,7 +29,10 @@ export function isUserAuthenticated() {
     return axios
     .get('/verifyAuth')
     .then(res => {
-        return res.data
+        store.dispatch({
+            type: "AUTH_VERIFY_AUTH",
+            payload: res.data
+        })
     })
     .catch(err => err)
 

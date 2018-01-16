@@ -17,9 +17,7 @@ class App extends React.Component {
     componentWillMount() {
         isUserAuthenticated()
         .then((res) => {
-            this.setState((state, prop) => {
-                return res.user
-            })
+            console.log(res)
         })
     }
 

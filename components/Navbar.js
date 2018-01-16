@@ -1,7 +1,14 @@
 import React from 'react';
 import {Nav, NavItem, Grid, Col, Row} from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { connect } from 'react-redux';
 import '../styles/Navbar.scss';
+
+@connect((store) => {
+    return { 
+        user: store.auth
+    }
+})
 
 export default class Navbar extends React.Component {
     constructor(props) {
@@ -19,11 +26,11 @@ export default class Navbar extends React.Component {
                     <NavItem className="nav-item" href="javascript:void(0)">Goals</NavItem>
                     <NavItem className="nav-item" href="javascript:void(0)">Friends</NavItem>
                     {
-                        this.props.userInfo && Object.keys(this.props.userInfo).length > 0
+                        this.props.userInfo && Object.keys(this.props.user.length > 0)
 
                         ?
 
-                        <NavItem className="nav-item">Hey, {this.props.userInfo.firstName}!</NavItem>
+                        <NavItem className="nav-item">Hey, {this.props.user.firstName}!</NavItem>
 
                         :
 
