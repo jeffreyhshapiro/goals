@@ -11,4 +11,6 @@ app.use(session({ secret: 'keyboard cat', cookie: { maxAge: null } }))
 
 require('./api')(app)
 
-models.sequelize.sync({ force: false }).then(() => app.listen(PORT, () => console.log(`Listening on ${PORT}`)));
+models.sequelize.sync({ force: false }).then(() => {
+    app.listen(PORT, () => console.log(`Listening on ${PORT}`))
+})
