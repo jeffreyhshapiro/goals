@@ -5,27 +5,16 @@ import Home from './Home.js'
 import { isUserAuthenticated } from '../utils/utils.js'
 
 class App extends React.Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            user: {}
-        }
-
-    }
 
     componentWillMount() {
-        isUserAuthenticated()
-        .then((res) => {
-            console.log(res)
-        })
+        isUserAuthenticated();
     }
 
     render() {
         return (
             <div data-section="App">
                 <Grid>
-                    <Navbar userInfo={this.state.user} />
+                    <Navbar />
                     <div id="main-app">
                         <Home />
                     </div>

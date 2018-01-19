@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import Navbar from './Home.js'
+import Goals from './Goals.js';
+import Navbar from './Home.js';
 import { retrieveGoals } from "../utils/utils.js";
 import "../styles/Home.scss"
 
@@ -10,7 +11,10 @@ class Home extends React.Component {
             <div data-section="Home">
                 <Row>
                     <Col xs={6} sm={6} md={6} lg={6} className="flexify">
-                        <div>Goals</div>
+                        <div>
+                            <h1>Goals</h1>
+                            <Goals />
+                        </div>
 
                     </Col>
                     <Col xs={6} sm={6} md={6} lg={6} className="flexify">Friends</Col>

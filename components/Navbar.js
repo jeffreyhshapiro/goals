@@ -11,10 +11,6 @@ import '../styles/Navbar.scss';
 })
 
 export default class Navbar extends React.Component {
-    constructor(props) {
-        super(props)
-
-    }
 
     render() {
         return (
@@ -26,7 +22,7 @@ export default class Navbar extends React.Component {
                     <NavItem className="nav-item" href="javascript:void(0)">Goals</NavItem>
                     <NavItem className="nav-item" href="javascript:void(0)">Friends</NavItem>
                     {
-                        this.props.userInfo && Object.keys(this.props.user.length > 0)
+                        this.props.user && Object.keys(this.props.user).length > 0
 
                         ?
 

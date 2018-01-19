@@ -16,11 +16,12 @@ export function signInUser(userInfo) {
     axios
         .post('/authenticate', userInfo)
         .then((res) => {
-            console.log(res)
-            store.dispatch({
+            return store.dispatch({
                 type: "AUTH_SIGN_IN",
                 payload: res.data
-            })
+            });
+        }).then(() => {
+            window.location = "/"
         })
 }
 

@@ -26,7 +26,7 @@ module.exports = (app) => {
             password
         }).then((result) => {
             passport.authenticate('local-signin')(req, res, () => {
-                res.status(200).send({authSuccess: true});
+                res.status(200).json(req.session.passport);
             })
         }).catch((err) => {
             res.status(403).send({authSuccess: err});
@@ -35,10 +35,11 @@ module.exports = (app) => {
     });
 
     app.post('/api/authenticate', passport.authenticate('local-signin'), (req, res) => {
-        res.json({ authSuccess: true })
+        res.json(req.session.passport)
     });
 
     app.get('/api/verifyAuth', (req, res) => {
-        res.json({ user: req.session.passport})
+        console.log("how now", req.session.passport)
+        res.json(req.session.passport)
     })
 }

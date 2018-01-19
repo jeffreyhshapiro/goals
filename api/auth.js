@@ -24,32 +24,32 @@ module.exports = (passport) => {
                         emailAddress: username
                     }
                 })
-                    .then((res) => {
-                        return bcrypt
-                            .compare(password, res.password)
-                            .then((doesPasswordMatch) => {
-                                if (doesPasswordMatch) {
-                                    return {
-                                        firstName: res.firstName,
-                                        lastName: res.lastName,
-                                        emailAddress: res.emailAddress,
-                                        _id: res.id
-                                    }
-                                } else {
-                                    return false
+                .then((res) => {
+                    return bcrypt
+                        .compare(password, res.password)
+                        .then((doesPasswordMatch) => {
+                            if (doesPasswordMatch) {
+                                return {
+                                    firstName: res.firstName,
+                                    lastName: res.lastName,
+                                    emailAddress: res.emailAddress,
+                                    _id: res.id
                                 }
-                            })
-                    })
-                    .then((success) => {
-                        if (success) {
-                            done(null, success)
-                        } else {
-                            return done(null, false, { message: "Your username or password is incorrect" })
-                        }
-                    })
-                    .catch((err) => {
-                        console.log(err)
-                    })
+                            } else {
+                                return false
+                            }
+                        })
+                })
+                .then((success) => {
+                    if (success) {
+                        done(null, success)
+                    } else {
+                        return done(null, false, { message: "Your username or password is incorrect" })
+                    }
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
             }
         )
     )
