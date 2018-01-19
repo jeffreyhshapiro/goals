@@ -36,5 +36,14 @@ export function isUserAuthenticated() {
         })
     })
     .catch(err => err)
+}
 
+export function createNewGoal() {
+    axios.post('/createGoal')
+         .then((res) => {
+             store.dispatch({
+                 type: "UPDATE_GOALS",
+                 payload: res.data
+             })
+         })
 }

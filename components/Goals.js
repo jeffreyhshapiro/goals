@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+import GoalEntryForm from './GoalEntryForm.js';
 
 @connect((store) => {
     return {
@@ -23,7 +24,7 @@ class Goal extends React.Component {
 
                         :
 
-                        <div> You need some goals </div>
+                        <GoalEntryForm />
 
                     :
 
