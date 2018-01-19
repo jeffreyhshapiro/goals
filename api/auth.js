@@ -2,6 +2,8 @@ const LocalStrategy = require('passport-local').Strategy;
 const models = require('../models');
 const bcrypt = require('bcrypt');
 
+let sessionInfo = {};
+
 module.exports = (passport) => {
 
     passport.serializeUser(function (user, done) {
@@ -41,11 +43,23 @@ module.exports = (passport) => {
                         })
                 })
                 .then((success) => {
+                    sessionInfo.user = success;
                     if (success) {
-                        done(null, success)
+                        return models.Goal.findAll({
+                            where: {
+                                UserId: success._id
+                            }
+                        })
                     } else {
                         return done(null, false, { message: "Your username or password is incorrect" })
                     }
+                })
+                .then((goals) => {
+                    sessionInfo.goals = goals;
+                    return sessionInfo;
+                })
+                .then((sessionInfo) => {
+                    done(null, sessionInfo);
                 })
                 .catch((err) => {
                     console.log(err)

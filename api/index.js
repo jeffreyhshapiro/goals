@@ -39,7 +39,6 @@ module.exports = (app) => {
     });
 
     app.get('/api/verifyAuth', (req, res) => {
-        console.log("how now", req.session.passport)
         res.json(req.session.passport)
     })
 }

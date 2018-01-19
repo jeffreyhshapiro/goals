@@ -9,7 +9,6 @@ import '../styles/Navbar.scss';
         user: store.auth
     }
 })
-
 export default class Navbar extends React.Component {
 
     render() {
