@@ -3,21 +3,25 @@ import  { createStore, combineReducers } from "redux";
 const authReducer = function(state={}, action) {
 
     switch(action.type){
-        case "AUTH_SIGN_IN": 
+        case "AUTH_SIGN_IN":
         case "AUTH_VERIFY_AUTH":
             const authPayload = action.payload.user;
             const { user, goals } = authPayload;
             const { emailAddress, firstName, lastName } = user;
 
-            return state = {
+            state = {
                 ...state,
                 emailAddress,
                 firstName,
                 lastName,
-                id: authPayload._id,
+                id: user._id,
                 goals: goals
             }
 
+            break;
+        
+        case "UPDATE_GOALS":
+            console.log('hello')
             break;
     }
 

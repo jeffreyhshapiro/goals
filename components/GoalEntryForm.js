@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import { Grid, Row, Col, FormControl, FormGroup, Button } from "react-bootstrap";
 import { createNewGoal } from '../utils/utils.js';
+import { connect } from 'react-redux';
 
+@connect((store) => {
+    return {
+        user: store.auth
+    }
+})
 class GoalEntryForm extends React.Component {
     constructor(props) {
         super(props)
@@ -20,7 +26,9 @@ class GoalEntryForm extends React.Component {
     submitGoal() {
         const goal = this.state.goal;
 
-        createNewGoal(goal)
+        this.props.user.goals.push(goal);
+
+        createNewGoal(this.props.user)
     }
 
     render() {

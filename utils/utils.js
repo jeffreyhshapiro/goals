@@ -1,5 +1,8 @@
 import axios from 'axios';
-import store from './store'
+import store from '../utils/store.js';
+
+console.log(store.getState().auth)
+
 
 export function signUpUser(userInfo) {
     axios
@@ -29,7 +32,7 @@ export function isUserAuthenticated() {
 
     return axios
     .get('/verifyAuth')
-    .then(res => {
+    .then((res) => {
         store.dispatch({
             type: "AUTH_VERIFY_AUTH",
             payload: res.data
@@ -38,8 +41,8 @@ export function isUserAuthenticated() {
     .catch(err => err)
 }
 
-export function createNewGoal() {
-    axios.post('/createGoal')
+export function createNewGoal(goal) {
+    axios.post('/createGoal', goal)
          .then((res) => {
              store.dispatch({
                  type: "UPDATE_GOALS",
