@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import GoalEntryForm from './GoalEntryForm.js';
+import DisplayGoal from './DisplayGoal.js'
 
 @connect((store) => {
     return {
@@ -20,7 +21,9 @@ class Goal extends React.Component {
                         
                         ?
 
-                        <div> Here are your goals </div>
+                            this.props.user.goals.map((goal, i) => {
+                                return <DisplayGoal goal={goal} key={i} />
+                            })
 
                         :
 

@@ -26,9 +26,12 @@ class GoalEntryForm extends React.Component {
     submitGoal() {
         const goal = this.state.goal;
 
-        this.props.user.goals.push(goal);
+        const goalInfo = {
+            goal,
+            userId: this.props.user.id
+        }
 
-        createNewGoal(this.props.user)
+        createNewGoal(goalInfo)
     }
 
     render() {

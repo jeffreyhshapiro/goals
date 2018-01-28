@@ -1,9 +1,6 @@
 import axios from 'axios';
 import store from '../utils/store.js';
 
-console.log(store.getState().auth)
-
-
 export function signUpUser(userInfo) {
     axios
         .post('/register', userInfo)
