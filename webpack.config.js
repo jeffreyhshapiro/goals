@@ -32,7 +32,8 @@ module.exports = {
         proxy: {
             "/register"    : "http://localhost:3000/api",
             "/authenticate": "http://localhost:3000/api",
-            "/verifyAuth"  : "http://localhost:3000/api"
+            "/verifyAuth"  : "http://localhost:3000/api",
+            "/createGoal"  : "http://localhost:3000/api/goal"
         }
     },
     plugins: [HTMLWebpackPluginConfig]
