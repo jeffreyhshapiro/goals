@@ -4,8 +4,10 @@ const bp = require('body-parser');
 const bcrypt = require('bcrypt');
 const models = require('../models');
 
-
 module.exports = (app) => {
+
+    //all routes relating to goals
+    require('./goals.js')(app);
 
     app.use(bp.urlencoded({ extended: false }))
     app.use(bp.json())
@@ -40,5 +42,5 @@ module.exports = (app) => {
 
     app.get('/api/verifyAuth', (req, res) => {
         res.json(req.session.passport)
-    })
+    });
 }
