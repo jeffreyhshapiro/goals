@@ -43,13 +43,8 @@ module.exports = (sequelize, DataTypes) => {
                             return user.password = hash;
                         });
                 }
-            }, 
-            classMethods: {
-                associate: (models) => {
-                    User.hasMany(models.Goal)
-                }
             }
         });
-
+        
     return User
 }
