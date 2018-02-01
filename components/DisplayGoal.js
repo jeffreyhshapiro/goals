@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import { Panel, Col, Row } from 'react-bootstrap';
+import AddAFriend from './AddAFriend.js';
 
 class DisplayGoal extends React.Component {
 
     render() {
+
+        console.log(this.props.goal)
 
         const circleStyle = {
             borderRadius: "50%",
@@ -31,7 +34,21 @@ class DisplayGoal extends React.Component {
                         <div style={ circleStyle }></div>
                         </div>
                     </Col>
+
                     </Row>
+                    <div>
+                        {
+                            this.props.goal.FriendId 
+                            
+                            ?
+
+                            this.props.goal.FriendId
+
+                            :
+
+                            <AddAFriend />
+                        }
+                    </div>
                 </Panel>
             </div>
         )
