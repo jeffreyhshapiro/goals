@@ -18,8 +18,7 @@ class App extends React.Component {
     }
 
     render() {
-
-        console.log(this.props)
+        console.log(this.props.user)
         return (
             <div data-section="App">
                 <Grid>
