@@ -5,8 +5,8 @@ export function signUpUser(userInfo) {
     axios
         .post('/register', userInfo)
         .then((res) => {
-            if (res.data.authSuccess) {
-                window.location = "/"
+            if(res.data.user) {
+                window.location = "/";
             }
         })
 
@@ -30,7 +30,7 @@ export function isUserAuthenticated() {
     return axios
     .get('/verifyAuth')
     .then((res) => {
-        store.dispatch({
+        return store.dispatch({
             type: "AUTH_VERIFY_AUTH",
             payload: res.data
         })
@@ -45,5 +45,8 @@ export function createNewGoal(goal) {
                  type: "UPDATE_GOALS",
                  payload: res.data
              })
+         })
+         .then((res) => {
+             window.location = "/";
          })
 }

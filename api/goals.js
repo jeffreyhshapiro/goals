@@ -3,7 +3,6 @@ const Goal = require('../models').Goal;
 module.exports = (app) => {
 
     app.post('/api/goal/createGoal', (req, res) => {
-        console.log(req.body)
 
         const { userId, goal } = req.body;
 

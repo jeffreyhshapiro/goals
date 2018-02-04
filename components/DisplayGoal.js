@@ -6,8 +6,6 @@ class DisplayGoal extends React.Component {
 
     render() {
 
-        console.log(this.props.goal)
-
         const circleStyle = {
             borderRadius: "50%",
             width: "20px",

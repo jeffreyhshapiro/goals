@@ -21,7 +21,13 @@ const authReducer = function(state={}, action) {
             break;
         
         case "UPDATE_GOALS":
-            console.log('hello')
+            const newGoal = action.payload;
+            const userGoals = state.goals.push(newGoal);
+
+            state = {
+                ...state,
+                goals: userGoals
+            }
             break;
     }
 
