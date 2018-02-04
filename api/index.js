@@ -41,6 +41,15 @@ module.exports = (app) => {
     });
 
     app.get('/api/verifyAuth', (req, res) => {
-        res.json(req.session.passport)
+        models.Goal.findAll({
+            where: {
+                UserId: req.session.passport.user.user._id
+            }
+        }).then((resp) => {
+            if (req.session.passport && req.session.passport.user) {
+                req.session.passport.user.goals = resp;
+            }
+            res.json(req.session.passport);
+        })
     });
 }
