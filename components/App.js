@@ -18,7 +18,6 @@ class App extends React.Component {
     }
 
     render() {
-        console.log(this.props.user)
         return (
             <div data-section="App">
                 <Grid>
@@ -34,7 +33,7 @@ class App extends React.Component {
                             :
 
                             <div>
-                                Are you ready to crush some goals?
+                                <p style={{textAlign: 'center'}}>Are you ready to crush some goals?</p>
                                 <SignUpForm />
                             </div>
                         }
