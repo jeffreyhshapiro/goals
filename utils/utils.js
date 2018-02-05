@@ -46,7 +46,4 @@ export function createNewGoal(goal) {
                  payload: res.data
              })
          })
-         .then((res) => {
-             window.location = "/";
-         })
 }

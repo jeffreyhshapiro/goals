@@ -22,13 +22,19 @@ const authReducer = function(state={}, action) {
         
         case "UPDATE_GOALS":
             const newGoal = action.payload;
-            const userGoals = state.goals.push(newGoal);
 
             state = {
                 ...state,
-                goals: userGoals
+                goals: [
+                    ...state.goals,
+                    newGoal
+                ]
             }
+
             break;
+
+        default:
+            return state;
     }
 
     return state;
