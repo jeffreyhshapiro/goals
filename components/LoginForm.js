@@ -44,7 +44,6 @@ class Login extends React.Component {
                     <FormGroup
                         controlId=""
                     >
-                        <Col xs={12} sm={12} md={12} lg={12}>
                             <FormControl
                                 name="emailAddress"
                                 type="email"
@@ -52,15 +51,11 @@ class Login extends React.Component {
                                 placeholder="Email Address"
                                 onChange={this.setFormValue.bind(this)}
                             />
-                        </Col>
                         <div style={{ marginTop: '10px' }}></div>
                     </FormGroup>
                     <FormGroup
                         controlId=""
                     >
-                        <Col xs={12} sm={12} md={12} lg={12}
-                            style={{ marginTop: '10px' }}
-                        >
                             <FormControl
                                 name="password"
                                 type="password"
@@ -68,7 +63,6 @@ class Login extends React.Component {
                                 placeholder="Password"
                                 onChange={this.setFormValue.bind(this)}
                             />
-                        </Col>
                     </FormGroup>
                 </Row>
                 <Row>

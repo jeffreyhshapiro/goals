@@ -68,53 +68,44 @@ class SignUpForm extends React.Component {
                         <FormGroup
                             controlId=""
                         >
-                            <Col xs={12} sm={6} md={6} lg={6}>
-                                <FormControl
-                                    name="firstName"
-                                    value={this.state.firstName}
-                                    placeholder="First Name"
-                                    onChange={this.setFormValue.bind(this)}
-                                />
-                            </Col>
-                            <Col xs={12} sm={6} md={6} lg={6}>
-                                <FormControl
-                                    name="lastName"
-                                    value={this.state.lastName}
-                                    placeholder="Last Name"
-                                    onChange={this.setFormValue.bind(this)}
-                                />
-                            </Col>
+                            <FormControl
+                                name="firstName"
+                                value={this.state.firstName}
+                                placeholder="First Name"
+                                onChange={this.setFormValue.bind(this)}
+                            />
+                        
+                            <FormControl
+                                name="lastName"
+                                value={this.state.lastName}
+                                placeholder="Last Name"
+                                onChange={this.setFormValue.bind(this)}
+                            />
                         </FormGroup>
                     </Row>
                     <Row>
                         <FormGroup
                             controlId=""
                         >
-                            <Col xs={12} sm={12} md={12} lg={12}>
-                                <FormControl
-                                    name="emailAddress"
-                                    type="email"
-                                    value={this.state.emailAddress}
-                                    placeholder="Email Address"
-                                    onChange={this.setFormValue.bind(this)}
-                                />
-                            </Col>
-                            <div style={{ marginTop: '10px' }}></div>
+                            <FormControl
+                                name="emailAddress"
+                                type="email"
+                                value={this.state.emailAddress}
+                                placeholder="Email Address"
+                                onChange={this.setFormValue.bind(this)}
+                            />
+                        <div style={{ marginTop: '10px' }}></div>
                         </FormGroup>
                         <FormGroup
                             controlId=""
                         >
-                            <Col xs={12} sm={12} md={12} lg={12}
-                                style={{ marginTop: '10px' }}
-                            >
-                                <FormControl
-                                    name="password"
-                                    type="password"
-                                    value={this.state.password}
-                                    placeholder="Password"
-                                    onChange={this.setFormValue.bind(this)}
-                                />
-                            </Col>
+                            <FormControl
+                                name="password"
+                                type="password"
+                                value={this.state.password}
+                                placeholder="Password"
+                                onChange={this.setFormValue.bind(this)}
+                            />
                         </FormGroup>
                     </Row>
                     <div className="divider"></div>
