@@ -22,7 +22,7 @@ class Goal extends React.Component {
                         ?
 
                             this.props.user.goals.map((goal, i) => {
-                                return <DisplayGoal goal={goal} key={i} />
+                                return <DisplayGoal goal={goal} key={i} goalIndex={i} />
                             })
 
                         :
