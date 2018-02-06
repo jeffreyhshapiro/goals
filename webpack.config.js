@@ -33,7 +33,8 @@ module.exports = {
             "/register"    : "http://localhost:3000/api",
             "/authenticate": "http://localhost:3000/api",
             "/verifyAuth"  : "http://localhost:3000/api",
-            "/createGoal"  : "http://localhost:3000/api/goal"
+            "/createGoal"  : "http://localhost:3000/api/goal",
+            "/submitFriend": "http://localhost:3000/api/friend",
         }
     },
     plugins: [HTMLWebpackPluginConfig]

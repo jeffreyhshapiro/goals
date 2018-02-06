@@ -47,3 +47,12 @@ export function createNewGoal(goal) {
              })
          })
 }
+
+export function submitFriendForGoal(friend) {
+    console.log(friend)
+
+    axios.post('/submitFriend', friend)
+        .then((res) => {
+            console.log('where did you come from where did you go')
+        })
+}
