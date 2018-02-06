@@ -44,7 +44,7 @@ class DisplayGoal extends React.Component {
 
                             :
 
-                            <AddAFriend />
+                            <AddAFriend goalIndex={this.props.goalIndex} />
                         }
                     </div>
                 </Panel>
