@@ -41,7 +41,7 @@ class AddAFriend extends React.Component {
             firstName,
             phoneNumber,
             goals: goalsInfo
-        })
+        });
     }
 
     render() {

@@ -1,16 +1,22 @@
 const Friend = require('../models').Friend;
+const Goal = require('../models').Goal;
 
 module.exports = (app) => {
 
-    app.post('/api/goal/friend', (req, res) => {
+    app.post('/api/friend/submitFriend', (req, res) => {
 
         console.log(req.body);
 
-        // Friend.create({
-            
-        // }).then((resp) => {
-        //     res.status(200).json(resp);
-        // })
+        const { firstName, phoneNumber } = req.body;
+        const UserId = req.body.goals.UserId;
+
+        Friend.create({
+            firstName,
+            phoneNumber,
+            UserId
+        }).then((resp) => {
+            res.status(200).json(resp);
+        })
     });
 
 }

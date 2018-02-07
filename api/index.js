@@ -8,6 +8,7 @@ module.exports = (app) => {
 
     //all routes relating to goals
     require('./goals.js')(app);
+    require('./friend.js')(app);
 
     app.use(bp.urlencoded({ extended: false }))
     app.use(bp.json())
