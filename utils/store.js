@@ -18,6 +18,8 @@ const authReducer = function(state={}, action) {
                 goals: goals
             }
 
+            console.log(state)
+
             break;
         
         case "UPDATE_GOALS":
@@ -32,6 +34,17 @@ const authReducer = function(state={}, action) {
             }
 
             break;
+
+        case "ADD_FRIEND":
+            const newFriend = action.payload;
+
+            state = {
+                ...state,
+                goals: [
+                    ...state.goals,
+                    newGoal
+                ]
+            }
 
         default:
             return state;

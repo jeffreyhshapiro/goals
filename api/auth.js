@@ -48,7 +48,11 @@ module.exports = (passport) => {
                         return models.Goal.findAll({
                             where: {
                                 UserId: success._id
-                            }
+                            },
+                            include: [{ 
+                                model: models.Friend,
+                                as: "Friend"
+                            }]
                         })
                     } else {
                         return done(null, false, { message: "Your username or password is incorrect" })

@@ -5,17 +5,27 @@ module.exports = (app) => {
 
     app.post('/api/friend/submitFriend', (req, res) => {
 
-        console.log(req.body);
-
         const { firstName, phoneNumber } = req.body;
-        const UserId = req.body.goals.UserId;
+        const { UserId } = req.body.goals;
+        const GoalId = req.body.goals.id;
+        let friendId;
 
         Friend.create({
             firstName,
             phoneNumber,
             UserId
         }).then((resp) => {
-            res.status(200).json(resp);
+            friendId = resp.id;
+            return Goal.update({
+                FriendId: friendId
+                }, {
+                    where: {
+                        id: GoalId,
+                        UserId
+                    }
+                })
+        }).then((resp) => {
+            res.status(200).json({status: 'success'});
         })
     });
 

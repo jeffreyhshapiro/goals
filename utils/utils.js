@@ -52,6 +52,9 @@ export function submitFriendForGoal(friend) {
 
     axios.post('/submitFriend', friend)
         .then((res) => {
-            console.log('where did you come from where did you go')
+            store.dispatch({
+                type: "ADD_FRIEND",
+                payload: res.data
+            })
         })
 }
