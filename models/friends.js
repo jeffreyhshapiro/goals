@@ -20,10 +20,6 @@ module.exports = (sequelize, DataTypes) => {
         Friend.belongsTo(models.User, {
             foriegnKey: "userId"
         })
-
-        Friend.hasMany(models.Goal, {
-            as: "Goal"
-        })
     }
 
     return Friend;

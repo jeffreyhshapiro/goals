@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
         Goal.belongsTo(models.User, {
             foriegnKey: "userId"
         })
+
+        Goal.hasMany(models.Friend, {
+            foriegnKey: "friendId"
+        });
     }
 
     return Goal;

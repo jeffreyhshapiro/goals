@@ -46,9 +46,12 @@ module.exports = (passport) => {
                     sessionInfo.user = success;
                     if (success) {
                         return models.Goal.findAll({
-                            where: {
-                                UserId: success._id
-                            }
+                            include: [{
+                                model: models.Friend,
+                                where: {
+                                    UserId: success._id
+                                }
+                            }]
                         })
                     } else {
                         return done(null, false, { message: "Your username or password is incorrect" })

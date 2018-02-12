@@ -49,9 +49,12 @@ export function createNewGoal(goal) {
 }
 
 export function submitFriendForGoal(friend) {
-
     axios.post('/submitFriend', friend)
         .then((res) => {
-            console.log('where did you come from where did you go')
+            console.log("success", res);
+            store.dispatch({
+                type: "ADD_FRIEND_TO_GOAL",
+                payload: res.data
+            })
         })
 }

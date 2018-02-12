@@ -9,11 +9,13 @@ module.exports = (app) => {
 
         const { firstName, phoneNumber } = req.body;
         const UserId = req.body.goals.UserId;
+        const GoalId = req.body.goals.id;
 
         Friend.create({
             firstName,
             phoneNumber,
-            UserId
+            UserId,
+            GoalId
         }).then((resp) => {
             res.status(200).json(resp);
         })
