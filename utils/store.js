@@ -35,13 +35,17 @@ const authReducer = function(state={}, action) {
 
         case "ADD_FRIEND_TO_GOAL":
 
+            state = {
+                ...state,
+                goals: [
+                    ...state.goals,
+                ]
+            }
             
 
         default:
             return state;
     }
-
-    console.log(state)
 
     return state;
 
