@@ -42,23 +42,6 @@ module.exports = (app) => {
     });
 
     app.get('/api/verifyAuth', (req, res) => {
-
-        //if the user is signed in, get their goals and send to the front end
-        if (req.session.passport && req.session.passport.user) {
-            
-            models.Goal.findAll({
-                where: {
-                    UserId: req.session.passport.user.user._id
-                }
-            }).then((resp) => {
-                if (req.session.passport && req.session.passport.user) {
-                    req.session.passport.user.goals = resp;
-                }
-                res.json(req.session.passport);
-            });
-
-        } else {
-            res.json(req.session.passport);
-        }
+        res.json(req.session.passport);
     });
 }
