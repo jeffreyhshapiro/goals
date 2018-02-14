@@ -36,11 +36,13 @@ class DisplayGoal extends React.Component {
                     </Row>
                     <div>
                         {
-                            this.props.goal.FriendId 
+                            this.props.goal.Friends.length > 0 
                             
                             ?
 
-                            this.props.goal.FriendId
+                            this.props.goal.Friends.map((friend, i) => {
+                                return <div key={i}>{friend.firstName}</div>
+                            })
 
                             :
 

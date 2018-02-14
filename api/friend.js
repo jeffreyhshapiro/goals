@@ -5,8 +5,6 @@ module.exports = (app) => {
 
     app.post('/api/friend/submitFriend', (req, res) => {
 
-        console.log(req.body);
-
         const { firstName, phoneNumber } = req.body;
         const UserId = req.body.goals.UserId;
         const GoalId = req.body.goals.id;
