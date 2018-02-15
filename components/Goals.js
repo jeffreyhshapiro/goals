@@ -20,11 +20,18 @@ class Goal extends React.Component {
                         this.props.user.goals.length > 0
                         
                         ?
+                            <div>
+                                {
+                                    this.props.user.goals.map((goal, i) => {
+                                        return <DisplayGoal goal={goal} key={i} goalIndex={i} />
+                                    })
+                                }
 
-                            this.props.user.goals.map((goal, i) => {
-                                return <DisplayGoal goal={goal} key={i} goalIndex={i} />
-                            })
+                                <br />
+                                
+                                <GoalEntryForm cta="Add Another Goal" />
 
+                            </div>
                         :
 
                         <GoalEntryForm />
