@@ -37,7 +37,18 @@ class GoalEntryForm extends React.Component {
     render() {
         return (
             <div data-section="goal-entry-form">
-                <div>You don't have any goals yet!</div>
+                
+                {
+                    this.props.cta
+
+                    ?
+
+                    <div>Any other goals you have in mind?</div>
+
+                    :
+
+                    <div>You don't have any goals yet!</div>
+                }
                 <Grid style={{width:"100%", padding:"20px"}}>
                     <Row>
                         <FormGroup
@@ -53,7 +64,19 @@ class GoalEntryForm extends React.Component {
                                     onChange={this.setFormValue.bind(this)}
                                 />
                                 <div style={{display:'flex', alignItems:"center", justifyContent:"center", paddingTop: "10px"}}>
-                                <Button bsStyle="primary" onClick={this.submitGoal.bind(this)}>Get Started</Button>
+                                <Button bsStyle="primary" onClick={this.submitGoal.bind(this)}>
+                                {
+                                    this.props.cta
+
+                                    ?
+                                    
+                                    this.props.cta
+
+                                    :
+
+                                    "Get Started"
+                                }
+                                </Button>
                                 </div>
                             </Col>
                         </FormGroup>
