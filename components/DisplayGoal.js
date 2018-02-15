@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Panel, Col, Row } from 'react-bootstrap';
+import Friend from './Friend.js'
 import AddAFriend from './AddAFriend.js';
 
 class DisplayGoal extends React.Component {
@@ -40,9 +41,15 @@ class DisplayGoal extends React.Component {
                             
                             ?
 
-                            this.props.goal.Friends.map((friend, i) => {
-                                return <div key={i}>{friend.firstName}</div>
-                            })
+                            
+                            <div>
+                                <p>Who's helping you stay on track?</p>
+                                {
+                                    this.props.goal.Friends.map((friend, i) => {
+                                        return < Friend key={i} friend={friend} />
+                                    })
+                                }
+                            </div>
 
                             :
 
@@ -50,6 +57,8 @@ class DisplayGoal extends React.Component {
                         }
                     </div>
                 </Panel>
+
+                <hr />
             </div>
         )
     }
