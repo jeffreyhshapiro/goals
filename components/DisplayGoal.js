@@ -37,7 +37,7 @@ class DisplayGoal extends React.Component {
                     </Row>
                     <div>
                         {
-                            this.props.goal.Friends.length > 0 
+                            this.props.goal.Friends && this.props.goal.Friends.length > 0 
                             
                             ?
 
