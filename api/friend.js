@@ -15,6 +15,18 @@ module.exports = (app) => {
             UserId,
             GoalId
         }).then((resp) => {
+
+            const { goals } = req.session.passport.user;
+
+            for (let i in goals) {
+                if (goals[i].id === GoalId) {
+                    goals[i].Friends.push(resp);
+                    break;
+                }
+            }
+
+            
+
             res.status(200).json(resp);
         })
     });
