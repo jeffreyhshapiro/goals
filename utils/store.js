@@ -34,18 +34,28 @@ const authReducer = function(state={}, action) {
             break;
 
         case "ADD_FRIEND_TO_GOAL":
+            const newFriend = action.payload;
+
+            const { phoneNumber, goalIndex } = action.payload;
+            // avoiding a duplicate declaration error from up top
+            const friendFirstName = action.payload.firstName;
 
             state = {
                 ...state,
-                goals: [
-                    ...state.goals,
-                ]
+                ...state.goals[goalIndex]['Friends'] = [{
+                    firstName: friendFirstName,
+                    phoneNumber
+                }]   
+
             }
-            
+
+            break;
 
         default:
             return state;
     }
+
+    console.log("here", state)
 
     return state;
 

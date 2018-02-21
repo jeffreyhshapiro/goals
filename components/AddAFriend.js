@@ -40,7 +40,8 @@ class AddAFriend extends React.Component {
         submitFriendForGoal({
             firstName,
             phoneNumber,
-            goals: goalsInfo
+            goals: goalsInfo,
+            goalIndex
         });
     }
 
