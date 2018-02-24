@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "webpack": "webpack-dev-server --hot --inline"
+    "webpack": "webpack-dev-server --hot --inline",
+    "twilio": "nodemon ./twilio/server.js"
   },
   "author": "",
   "license": "ISC",

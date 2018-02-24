@@ -7,7 +7,6 @@ import AddAFriend from './AddAFriend.js';
 class DisplayGoal extends React.Component {
 
     formatDateTime(date) {
-
         if(!!date) {
             const dateTime = new Date(date);
     

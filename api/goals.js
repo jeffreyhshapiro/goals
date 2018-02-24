@@ -6,8 +6,6 @@ module.exports = (app) => {
     app.post('/api/goal/createGoal', (req, res) => {
         const { userId, goal, deadline } = req.body;
 
-        console.log(deadline)
-
         Goal.create({
             UserId: userId,
             goal,
