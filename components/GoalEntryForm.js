@@ -29,8 +29,8 @@ class GoalEntryForm extends React.Component {
 
     setDate(date) {
         this.setState({
-            deadline: date
-        })
+            deadline: moment(date)
+        });
     }
 
 
@@ -39,7 +39,7 @@ class GoalEntryForm extends React.Component {
 
         const goalInfo = {
             goal,
-            deadline: deadline.format(),
+            deadline: deadline.format("MM-DD-YYYY"),
             userId: this.props.user.id
         }
 
@@ -75,6 +75,8 @@ class GoalEntryForm extends React.Component {
                                     placeholder="What is your goal?"
                                     onChange={this.setFormValue.bind(this)}
                                 />
+
+                                <small>Deadline to complete your goal:</small>
                                 <DatePicker 
                                     name="deadline"
                                     selected={this.state.deadline}
