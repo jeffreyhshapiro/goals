@@ -4,11 +4,14 @@ const passport = require('passport');
 module.exports = (app) => {
 
     app.post('/api/goal/createGoal', (req, res) => {
-        const { userId, goal } = req.body;
+        const { userId, goal, deadline } = req.body;
+
+        console.log(deadline)
 
         Goal.create({
             UserId: userId,
             goal,
+            deadline: deadline,
             completed: false
         }).then((resp) => {
             //update session object

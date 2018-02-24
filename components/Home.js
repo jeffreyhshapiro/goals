@@ -9,16 +9,12 @@ class Home extends React.Component {
     render() {
         return (
             <div data-section="Home">
-                <Row>
-                    <Col xs={6} sm={6} md={6} lg={6} className="flexify">
-                        <div>
-                            <h1>Goals</h1>
-                            <Goals />
-                        </div>
-
-                    </Col>
-                    <Col xs={6} sm={6} md={6} lg={6} className="flexify">Friends</Col>
-                </Row>
+                <div className="flexify">
+                    <div>
+                        <h1>Goals</h1>
+                        <Goals />
+                    </div> 
+                </div>
             </div>
         )
     }

@@ -1,9 +1,19 @@
 import React, { Component } from "react";
 import { Panel, Col, Row } from 'react-bootstrap';
+import moment from 'moment';
 import Friend from './Friend.js'
 import AddAFriend from './AddAFriend.js';
 
 class DisplayGoal extends React.Component {
+
+    formatDateTime(date) {
+
+        if(!!date) {
+            const dateTime = new Date(date);
+    
+            return moment(dateTime).format("MM-DD-YYYY");
+        }
+    }
 
     render() {
 
@@ -21,11 +31,25 @@ class DisplayGoal extends React.Component {
 
         return (
             <div className="render-goal">
-                <Panel>
+                <Panel bsStyle="primary">
                     <Row>
                     <Col xs={8} sm={8} md={8}>
                         <div>
                             { this.props.goal.goal }
+                        </div>
+                        <br />
+                        <div>
+                            {
+                                this.props.goal.deadline 
+
+                                ?
+
+                                <div> Check in on: {this.formatDateTime(this.props.goal.deadline)} </div>
+
+                                :
+
+                                ""
+                            }
                         </div>
                     </Col>
                     <Col xs={4} sm={4} md={4}>

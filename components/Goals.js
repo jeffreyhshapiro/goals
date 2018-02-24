@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import GoalEntryForm from './GoalEntryForm.js';
 import DisplayGoal from './DisplayGoal.js'
+import moment from 'moment';
 
 @connect((store) => {
     return {

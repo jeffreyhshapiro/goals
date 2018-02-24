@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
         completed: {
             type: DataTypes.BOOLEAN,
             required: true
+        },
+        deadline: {
+            type: DataTypes.DATE,
+            allowNull: true
         }
     });
 
