@@ -1,28 +1,36 @@
 const cron = require('node-cron');
 const Goals = require('../models').Goal;
+const Friends = require('../models').Friend;
+const Users = require('../models').User;
+const sendText = require('./sendText.js');
 const moment = require('moment');
 const dateToday = moment().format("MM-DD-YYYY");
 
 function findTodaysGoalDeadlines() {
+
     Goals.findAll({
         where: {
             deadline: dateToday
-        }
+        },
+
+        include: [Friends, Users]
     })
     .then((todaysDeadlines) => {
-        console.log(todaysDeadlines)
+        console.log(todaysDeadlines.length)
 
-        const todaysGoalsWithFriends = todaysDeadlines.filter((deadline) => {
-            if(deadline.Friends) {
+        return todaysGoalsWithFriends = todaysDeadlines.filter((deadline) => {
+            if(deadline.Friends.length > 0) {
                 return deadline
             }
         });
 
-        console.log(todaysGoalsWithFriends);
+    })
+    .then((todaysGoalsForTexts) => {
+        sendText(todaysGoalsForTexts);
     })
 }
 
 
-cron.schedule("*/5 * * * * *", function() {
+cron.schedule("*/10 * * * * *", function() {
     findTodaysGoalDeadlines();
 });
