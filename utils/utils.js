@@ -33,13 +33,13 @@ export function isUserAuthenticated() {
         return store.dispatch({
             type: "AUTH_VERIFY_AUTH",
             payload: res.data
-        })
+        }) 
     })
     .catch(err => err)
 }
 
 export function createNewGoal(goal) {
-    axios.post('/createGoal', goal)
+    axios.post('/createGoal', goal) 
          .then((res) => {
              store.dispatch({
                  type: "UPDATE_GOALS",
@@ -64,4 +64,12 @@ export function submitFriendForGoal(friend) {
                 payload: { ...res.data, goalIndex: friend['goalIndex'] }
             })
         })
+}
+
+export function logoutUser() {
+    axios.get('/logout').then(res => {
+        if(res.status === true) {
+            window.location = "/";
+        }
+    })
 }

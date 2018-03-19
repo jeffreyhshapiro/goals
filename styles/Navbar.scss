@@ -5,5 +5,16 @@
     .nav-item {
         margin: 20px;
     }
+
+    .nav-dropdown {
+        display: none;
+        position: absolute;
+        background-color: white;
+
+        ul {
+            list-style-type: none;
+        }
+
+    }
 }
 

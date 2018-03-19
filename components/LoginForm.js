@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Col, Row, FormControl, FormGroup, ControlLabel, Button } from 'react-bootstrap';
 import { signInUser } from '../utils/utils.js';
+import '../styles/Login.scss';
 
 class Login extends React.Component {
     constructor(props) {
@@ -35,7 +36,7 @@ class Login extends React.Component {
     render() {
 
         const width = {
-            width: '70%'
+            // width: '70%'
         }
 
         return (

@@ -45,4 +45,9 @@ module.exports = (app) => {
     app.get('/api/verifyAuth', (req, res) => {
         res.json(req.session.passport);
     });
+
+    app.get('/api/logout', (req, res) => {
+        req.logout();
+        res.status(200).json({status: true});
+    })
 }
