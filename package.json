@@ -19,6 +19,7 @@
     "express-session": "^1.15.6",
     "moment": "^2.20.1",
     "mysql2": "^1.5.1",
+    "node-cron": "^1.2.1",
     "node-sass": "^4.7.2",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
@@ -33,6 +34,7 @@
     "redux": "^3.7.2",
     "sequelize": "^4.28.6",
     "sequelize-cli": "^3.2.0",
+    "twilio": "^3.13.0",
     "webpack": "^3.8.1"
   },
   "devDependencies": {
