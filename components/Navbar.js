@@ -20,7 +20,7 @@ export default class Navbar extends React.Component {
         return (
             <div data-section="Navbar" style={{backgroundColor:'#f5f5f5'}}>
                 <Nav bsStyle="pills" className="navbar">
-                    <LinkContainer to="/"> 
+                    <LinkContainer to="javascript:void(0)"> 
                         <NavItem className="nav-item">account<span style={{fontWeight:"bold"}}>able</span></NavItem>
                     </LinkContainer>
                     <LinkContainer to="/">
