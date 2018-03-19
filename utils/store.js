@@ -51,6 +51,14 @@ const authReducer = function(state={}, action) {
 
             break;
 
+        case "GET_FRIENDS":
+            const existingFriends = action.payload;
+
+            state = {
+                ...state,
+                friends: existingFriends
+            }
+
         default:
             return state;
     }

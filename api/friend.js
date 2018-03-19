@@ -31,4 +31,15 @@ module.exports = (app) => {
         })
     });
 
+
+    app.get('/api/friend/friends', (req, res) => {
+        Friend.findAll({
+            where: {
+                UserId: req.session.passport.user.user._id
+            }
+        }).then(resp => {
+            res.json(resp);
+        })
+    })
+
 }

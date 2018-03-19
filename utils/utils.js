@@ -73,3 +73,12 @@ export function logoutUser() {
         }
     })
 }
+
+export function getUsersExistingFriends() {
+    axios.get('/friends').then(res => {
+        store.dispatch({
+            type: "GET_FRIENDS",
+            payload: res.data
+        })
+    })
+}

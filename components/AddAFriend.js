@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { FormControl, FormGroup, Button, Row, Col } from 'react-bootstrap';
-import { submitFriendForGoal } from '../utils/utils.js';
+import { submitFriendForGoal, getUsersExistingFriends } from '../utils/utils.js';
 import { connect } from 'react-redux';
 
 @connect((store) => {
@@ -17,6 +17,10 @@ class AddAFriend extends React.Component {
             firstName: "",
             phoneNumber: ""
         }
+    }
+
+    componentWillMount() {
+        getUsersExistingFriends();
     }
 
     handleShow() {

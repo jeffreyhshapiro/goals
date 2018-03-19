@@ -40,6 +40,7 @@ module.exports = {
             "/logout"      : "http://localhost:3000/api",
             "/createGoal"  : "http://localhost:3000/api/goal",
             "/submitFriend": "http://localhost:3000/api/friend",
+            "/friends"     : "http://localhost:3000/api/friend",
         }
     },
     plugins: [HTMLWebpackPluginConfig]

@@ -30,7 +30,7 @@ class DisplayGoal extends React.Component {
 
         return (
             <div className="render-goal">
-                <Panel bsStyle="primary">
+                <Panel bsStyle="primary" style={{minWidth:'500px'}}>
                     <Row>
                     <Col xs={8} sm={8} md={8}>
                         <div>
