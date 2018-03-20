@@ -15,18 +15,31 @@ class AddAFriend extends React.Component {
         this.state = {
             show: false,
             firstName: "",
-            phoneNumber: ""
+            phoneNumber: "",
+            showDropdown: false
         }
     }
 
     componentWillMount() {
-        getUsersExistingFriends();
+        getUsersExistingFriends()
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(!!nextProps.user.friends && nextProps.user.friends.length > 0) {
+            this.setState({
+                showDropdown: true
+            });
+        }
     }
 
     handleShow() {
         this.setState({
             show: !this.state.show
         })
+    }
+
+    handleDropdownChange(e) {
+        console.log(e.target.value)
     }
 
     setFriendData(e) {
@@ -50,7 +63,6 @@ class AddAFriend extends React.Component {
     }
 
     render() {
-
         return (
             <div className="add-a-friend" style={{paddingTop: '10px'}}>
                 <a href="javscript:void(0)" onClick={this.handleShow.bind(this)}> Add a friend </a>
@@ -74,6 +86,29 @@ class AddAFriend extends React.Component {
                                     onChange={this.setFriendData.bind(this)}
                                 />
                         </FormGroup>
+
+                        {
+
+                            this.state.showDropdown
+
+                            ?
+
+                            <FormGroup controlId="formControlsSelect">
+                                <FormControl componentClass="select" placeholder="select" onChange={this.handleDropdownChange.bind(this)}>
+                                    <option value="select">Choose a friend</option>
+                                    {
+                                        this.props.user.friends.map((friend, i) => {
+                                            return <option opt={i}>{friend.firstName}</option>
+                                        })
+                                    }
+                                </FormControl>
+                            </FormGroup>
+
+                            :
+
+                            ""
+
+                        }
 
                         <Button bsStyle="success" onClick={this.submitFriend.bind(this)}>Done</Button>
                 </div>

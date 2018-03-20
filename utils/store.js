@@ -59,11 +59,12 @@ const authReducer = function(state={}, action) {
                 friends: existingFriends
             }
 
+            break;
         default:
             return state;
     }
 
-    console.log("here", state)
+    console.log("herree", state)
 
     return state;
 
