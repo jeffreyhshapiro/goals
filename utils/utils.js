@@ -68,7 +68,7 @@ export function submitFriendForGoal(friend) {
 
 export function logoutUser() {
     axios.get('/logout').then(res => {
-        if(res.status === true) {
+        if(res.data.status === true) {
             window.location = "/";
         }
     })
