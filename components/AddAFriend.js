@@ -39,7 +39,19 @@ class AddAFriend extends React.Component {
     }
 
     handleDropdownChange(e) {
-        console.log(e.target.value)
+        const selectedIndex = e.target.selectedIndex;
+        const chosenFriendId = parseInt( e.target.options[selectedIndex].getAttribute('data-id') );
+
+        for (let friend of this.props.user.friends) {
+            if (friend.id === chosenFriendId) {
+                this.setState({
+                    firstName: friend.firstName,
+                    phoneNumber: friend.phoneNumber
+                });
+
+                break;
+            }
+        }
     }
 
     setFriendData(e) {
@@ -54,12 +66,17 @@ class AddAFriend extends React.Component {
         const goalIndex = this.props.goalIndex;
         const goalsInfo = goals[goalIndex];
 
-        submitFriendForGoal({
-            firstName,
-            phoneNumber,
-            goals: goalsInfo,
-            goalIndex
-        });
+        if ( !firstName || !phoneNumber ) {
+            console.log('please fill in all fields')
+        } else {
+            submitFriendForGoal({
+                firstName,
+                phoneNumber,
+                goals: goalsInfo,
+                goalIndex
+            });
+        }
+
     }
 
     render() {
@@ -98,7 +115,7 @@ class AddAFriend extends React.Component {
                                     <option value="select">Choose a friend</option>
                                     {
                                         this.props.user.friends.map((friend, i) => {
-                                            return <option opt={i}>{friend.firstName}</option>
+                                            return <option opt={i} data-id={friend.id}>{friend.firstName}</option>
                                         })
                                     }
                                 </FormControl>
