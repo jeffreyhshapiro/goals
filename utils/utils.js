@@ -16,13 +16,30 @@ export function signInUser(userInfo) {
     axios
         .post('/authenticate', userInfo)
         .then((res) => {
-            return store.dispatch({
-                type: "AUTH_SIGN_IN",
-                payload: res.data
-            });
-        }).then(() => {
-            window.location = "/"
+           
+            if(res.data.err) {
+
+                return store.dispatch({
+                    type: "AUTH_ERR",
+                    payload: res.data
+                })
+
+            } else {
+
+                return store.dispatch({
+                    type: "AUTH_SIGN_IN",
+                    payload: res.data
+                });
+            }
+
         })
+        .then((status) => {
+            window.location = "/";
+        })
+        .catch((err) => {
+            console.log("here", err)
+        })
+
 }
 
 export function isUserAuthenticated() {

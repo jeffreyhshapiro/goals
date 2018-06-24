@@ -1,17 +1,33 @@
 import React from 'react';
-import { Grid, Col, Row, FormControl, FormGroup, ControlLabel, Button } from 'react-bootstrap';
+import { Grid, Col, Row, FormControl, FormGroup, ControlLabel, Button, PageHeader } from 'react-bootstrap';
 import { signInUser } from '../utils/utils.js';
+import { connect } from 'react-redux';
 import '../styles/Login.scss';
 
+@connect((store) => {
+    return {
+        err: store.authErr.err
+    }
+})
 class Login extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
             emailAddress: "",
-            password: ""
+            password: "",
+            err: ""
         }
     }
+
+    // componentWillReceiveProps(nextProps) {
+    //     console.log(nextProps, "next")
+    //     if (nextProps.err) {
+    //         this.setState({
+    //             err: nextProps.err
+    //         })
+    //     }
+    // }
 
     setFormValue(e) {
         this.setState({
@@ -36,12 +52,15 @@ class Login extends React.Component {
     render() {
 
         const width = {
-            // width: '70%'
+            width: '40%',
+            margin: "0 auto"
         }
 
         return (
+            <div id="LoginForm">
             <Grid style={width}>
                 <Row>
+                    <div>{this.props.err}</div>
                     <FormGroup
                         controlId=""
                     >
@@ -71,8 +90,9 @@ class Login extends React.Component {
                         <Button bsStyle="primary" onClick={this.completeSignIn.bind(this)}>Sign in</Button>
                     </Col>
                 </Row>
-                <div className="divider"></div>
             </Grid>
+            <div className="divider"></div>
+            </div>
         )
     }
 }

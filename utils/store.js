@@ -5,8 +5,7 @@ const authReducer = function(state={}, action) {
     switch(action.type){
         case "AUTH_SIGN_IN":
         case "AUTH_VERIFY_AUTH":
-            const authPayload = action.payload.user;
-            const { user, goals } = authPayload;
+            const { user, goals } = action.payload.user;
             const { emailAddress, firstName, lastName } = user;
 
             state = {
@@ -17,9 +16,9 @@ const authReducer = function(state={}, action) {
                 id: user._id,
                 goals: goals
             }
-
+            
             break;
-        
+
         case "UPDATE_GOALS":
             const newGoal = action.payload;
 
@@ -64,14 +63,32 @@ const authReducer = function(state={}, action) {
             return state;
     }
 
-    console.log("herree", state)
+    return state;
+
+}
+
+
+const authErrReducer = function (state = {}, action) {
+
+    switch (action.type) {
+
+        case "AUTH_ERR":
+            const { err } = action.payload
+            state = {
+                ...state,
+                err
+            }
+            break;
+    }
 
     return state;
 
 }
 
+
 const reducers = combineReducers({
-    auth: authReducer
+    auth: authReducer,
+    authErr: authErrReducer
 });
 
 const store = createStore(reducers)

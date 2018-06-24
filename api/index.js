@@ -38,9 +38,25 @@ module.exports = (app) => {
 
     });
 
-    app.post('/api/authenticate', passport.authenticate('local-signin'), (req, res) => {
-        res.json(req.session.passport)
-    });
+    app.post('/api/authenticate', 
+
+        function(req, res, next) {
+            passport.authenticate('local-signin', (err, user, info) => {
+                if(err) {
+                    res.send(err);
+                } else {
+                    req.login( user, function(err) {
+                        if (err) throw err;
+                        res.json(user);
+                    })
+                }
+            })(req, res, next);
+        },
+
+        function(req, res) {
+            console.log(req, res)
+        }
+);
 
     app.get('/api/verifyAuth', (req, res) => {
         res.json(req.session.passport);

@@ -7,6 +7,7 @@ let sessionInfo = {};
 module.exports = (passport) => {
 
     passport.serializeUser(function (user, done) {
+        console.log("serialize", user)
         done(null, user);
     });
 
@@ -27,20 +28,27 @@ module.exports = (passport) => {
                     }
                 })
                 .then((res) => {
-                    return bcrypt
-                        .compare(password, res.password)
-                        .then((doesPasswordMatch) => {
-                            if (doesPasswordMatch) {
-                                return {
-                                    firstName: res.firstName,
-                                    lastName: res.lastName,
-                                    emailAddress: res.emailAddress,
-                                    _id: res.id
+
+                    if(!!res) {
+                        return bcrypt
+                            .compare(password, res.password)
+                            .then((doesPasswordMatch) => {
+                                if (doesPasswordMatch) {
+    
+                                    return {
+                                        firstName: res.firstName,
+                                        lastName: res.lastName,
+                                        emailAddress: res.emailAddress,
+                                        _id: res.id
+                                    }
+                                } else {
+                                    done({err: "Your username or password is not correct"});
                                 }
-                            } else {
-                                return false
-                            }
-                        })
+                            })
+                    } else {
+                        done({ err: "Your username or password is not correct" });
+                    }
+
                 })
                 .then((success) => {
                     sessionInfo.user = success;
@@ -51,8 +59,6 @@ module.exports = (passport) => {
                             },
                             include: [ models.Friend ]
                         })
-                    } else {
-                        return done(null, false, { message: "Your username or password is incorrect" })
                     }
                 })
                 .then((goals) => {
@@ -63,7 +69,7 @@ module.exports = (passport) => {
                     done(null, sessionInfo);
                 })
                 .catch((err) => {
-                    console.log(err)
+                    return done(err);
                 })
             }
         )
