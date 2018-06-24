@@ -46,19 +46,17 @@ module.exports = (app) => {
                     res.send(err);
                 } else {
                     req.login( user, function(err) {
+                        console.log(user);
                         if (err) throw err;
-                        res.json(user);
+                        res.json({user: user});
                     })
                 }
             })(req, res, next);
-        },
-
-        function(req, res) {
-            console.log(req, res)
         }
 );
 
     app.get('/api/verifyAuth', (req, res) => {
+        console.log(req.session.passport, "this is verification")
         res.json(req.session.passport);
     });
 

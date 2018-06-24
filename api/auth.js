@@ -7,7 +7,7 @@ let sessionInfo = {};
 module.exports = (passport) => {
 
     passport.serializeUser(function (user, done) {
-        console.log("serialize", user)
+        console.log(user, "this is user")
         done(null, user);
     });
 
