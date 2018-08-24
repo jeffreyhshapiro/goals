@@ -15,6 +15,7 @@ class GoalEntryForm extends React.Component {
     constructor(props) {
         super(props)
 
+        
         this.state = {
             goal: "",
             deadline: moment()

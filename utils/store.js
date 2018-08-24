@@ -7,18 +7,21 @@ const authReducer = function(state={}, action) {
         
         case "AUTH_SIGN_IN":
         case "AUTH_VERIFY_AUTH":
-        
-            const { user, goals } = action.payload.user;
-            const { emailAddress, firstName, lastName } = user;
 
-            state = {
-                ...state,
-                emailAddress,
-                firstName,
-                lastName,
-                id: user._id,
-                goals: goals
+            if (action.payload && action.payload.user) {
+                const { user, goals } = action.payload.user;
+                const { emailAddress, firstName, lastName } = user;
+    
+                state = {
+                    ...state,
+                    emailAddress,
+                    firstName,
+                    lastName,
+                    id: user._id,
+                    goals: goals
+                }
             }
+        
 
             break;
 
