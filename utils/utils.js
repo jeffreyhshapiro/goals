@@ -56,7 +56,7 @@ export function isUserAuthenticated() {
 }
 
 export function createNewGoal(goal) {
-    axios.post('/createGoal', goal) 
+    return axios.post('/createGoal', goal) 
          .then((res) => {
              store.dispatch({
                  type: "UPDATE_GOALS",

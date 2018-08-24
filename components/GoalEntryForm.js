@@ -44,6 +44,11 @@ class GoalEntryForm extends React.Component {
         }
 
         createNewGoal(goalInfo)
+        .then((res) => {
+            this.setState({
+                goal: ""
+            })
+        })
     }
 
     render() {

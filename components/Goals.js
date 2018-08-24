@@ -10,6 +10,11 @@ import moment from 'moment';
     }
 })
 class Goal extends React.Component {
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return true;
+    }
+
     render(){
         return(
             <div data-section="goals">
