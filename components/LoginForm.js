@@ -35,7 +35,7 @@ class Login extends React.Component {
             console.log('missing info');
 
         } else {
-            signInUser(this.state);
+           return signInUser(this.state);
         }
 
     }

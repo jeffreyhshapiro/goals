@@ -24,10 +24,11 @@ describe('< LoginForm />', () => {
             password: "geoffgeoff"
         });
 
-        wrapperInstance.instance().completeSignIn();
+        // console.log(wrapperInstance.instance().completeSignIn());
 
-        console.log(wrapper.instance().props.store);
-        console.log(wrapper.instance());
+        return wrapperInstance.instance().completeSignIn().then((res) => {
+            console.log(res)
+        })
         
     });
 })

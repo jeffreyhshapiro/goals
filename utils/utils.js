@@ -13,7 +13,7 @@ export function signUpUser(userInfo) {
 }
 
 export function signInUser(userInfo) {
-    axios
+   return axios
         .post('/authenticate', userInfo)
         .then((res) => {
            
@@ -32,9 +32,6 @@ export function signInUser(userInfo) {
                 });
             }
 
-        })
-        .then((status) => {
-            window.location = "/";
         })
         .catch((err) => {
             console.log("here", err)
