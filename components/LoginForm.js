@@ -4,11 +4,11 @@ import { signInUser } from '../utils/utils.js';
 import { connect } from 'react-redux';
 import '../styles/Login.scss';
 
-@connect((store) => {
+function mapStateToProps(state) {
     return {
-        err: store.authErr.err
+        err: state.authErr.err
     }
-})
+}
 class Login extends React.Component {
     constructor(props) {
         super(props)
@@ -19,15 +19,6 @@ class Login extends React.Component {
             err: ""
         }
     }
-
-    // componentWillReceiveProps(nextProps) {
-    //     console.log(nextProps, "next")
-    //     if (nextProps.err) {
-    //         this.setState({
-    //             err: nextProps.err
-    //         })
-    //     }
-    // }
 
     setFormValue(e) {
         this.setState({
@@ -97,4 +88,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+export default connect(mapStateToProps)(Login);

@@ -4,11 +4,12 @@ import GoalEntryForm from './GoalEntryForm.js';
 import DisplayGoal from './DisplayGoal.js'
 import moment from 'moment';
 
-@connect((store) => {
+function mapStateToProps(state) {
     return {
-        user: store.auth
+        user: state.auth
     }
-})
+}
+
 class Goal extends React.Component {
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -51,4 +52,4 @@ class Goal extends React.Component {
     }
 }
 
-export default Goal;
+export default connect(mapStateToProps)(Goal);
