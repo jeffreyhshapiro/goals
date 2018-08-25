@@ -5,7 +5,9 @@ const HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
     template: './index.html',
     filename: 'index.html',
     inject: 'body'
-})
+});
+
+const FlowWebpackPlugin = require('flow-webpack-plugin')
 
 module.exports = {
     entry:  __dirname + '/app/index.js',
@@ -43,5 +45,8 @@ module.exports = {
             "/friends"     : "http://localhost:3000/api/friend",
         }
     },
-    plugins: [HTMLWebpackPluginConfig]
+    plugins: [
+        HTMLWebpackPluginConfig,
+        new FlowWebpackPlugin()
+    ]
 }

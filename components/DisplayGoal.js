@@ -1,19 +1,49 @@
+// @flow
+
 import React, { Component } from "react";
 import { Panel, Col, Row } from 'react-bootstrap';
 import moment from 'moment';
 import Friend from './Friend.js'
 import AddAFriend from './AddAFriend.js';
 
-class DisplayGoal extends React.Component {
+type FriendAssociatedWithGoal = {
+    id: number,
+    GoalId: number,
+    UserId: number,
+    firstName: string,
+    lastName: ?string,
+    phoneNumber: string,
+    createdAt: string,
+    updatedAt: string
+}
 
-    formatDateTime(date) {
+type Goal = {
+    UserId: number,
+    completed: boolean,
+    createdAt: string,
+    deadline: string,
+    goal: string,
+    id: number,
+    updatedAt: string,
+    Friends: Array<FriendAssociatedWithGoal>
+}
+
+type Props = {
+    goalIndex: number,
+    goal: Goal
+}
+
+class DisplayGoal extends React.Component< Props > {
+
+    
+    formatDateTime(date:string) {
         if(!!date) {
             const dateTime = new Date(date);
-    
+            
             return moment(dateTime).format("MM-DD-YYYY");
         }
     }
-
+    
     render() {
 
         const circleStyle = {
@@ -68,7 +98,7 @@ class DisplayGoal extends React.Component {
                             <div>
                                 <p>Who's helping you stay on track?</p>
                                 {
-                                    this.props.goal.Friends.map((friend, i) => {
+                                    this.props.goal.Friends.map((friend:FriendAssociatedWithGoal, i) => {
                                         return < Friend key={i} friend={friend} />
                                     })
                                 }

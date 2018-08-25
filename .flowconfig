@@ -1,0 +1,14 @@
+[ignore]
+;this package breaks flow due to intentionally malformed JSON
+;All other NPM packages are purposefully included because they are otherwise not flow typed and will cause flow validation errors
+<PROJECT_ROOT>/node_modules/config-chain/*.
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+
+[strict]
