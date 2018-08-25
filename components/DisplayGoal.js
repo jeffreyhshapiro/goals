@@ -14,6 +14,10 @@ class DisplayGoal extends React.Component {
         }
     }
 
+    removeGoal(e) {
+        console.log(e, e.target);
+    }
+
     render() {
 
         const circleStyle = {
@@ -77,8 +81,12 @@ class DisplayGoal extends React.Component {
                             :
 
                             <AddAFriend goalIndex={this.props.goalIndex} />
+
+
                         }
                     </div>
+                    <br />
+                    <a href="javascript:void(0)" onClick={this.removeGoal.bind(this)}>Delete</a>
                 </Panel>
 
                 <hr />
